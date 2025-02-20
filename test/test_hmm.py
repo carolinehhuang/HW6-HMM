@@ -45,12 +45,9 @@ def test_mini_weather():
     with pytest.raises(ValueError):
         test.forward(np.array(["sunny", "rainy", "cloudy with the chance of a ValueError"]))
 
-    #test edge case where the dimensions of inputted data is incorrect
-    with pytest.raises(ValueError, match = r"Each emission must have an associated probability for each state, which also has a probability of occurring"):
-        test = HiddenMarkovModel(mini_hmm['observation_states'], mini_hmm['hidden_states'], mini_hmm['prior_p'],
-                             np.array([1]), mini_hmm['emission_p'])
-
-
+    # test edge case where the dimensions of inputted data is incorrect
+    with pytest.raises(ValueError, match=r"Each emission must have an associated probability for each state, which also has a probability of occurring"):
+        test = HiddenMarkovModel(mini_hmm['observation_states'], mini_hmm['hidden_states'], mini_hmm['prior_p'], np.array([1]), mini_hmm['emission_p'])
 
 
 def test_full_weather():
@@ -78,6 +75,8 @@ def test_full_weather():
 
     #assert that the outputted sequence from the class is equivalent to the expected sequence
     assert ((test_full.viterbi(test_seq_full)) == check_seq_full).all()
+
+
 
 
 

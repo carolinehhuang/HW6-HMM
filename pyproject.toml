@@ -1,4 +1,4 @@
-[build-system]
+# pyproject.toml
 [build-system]
 requires = [
 	"flit_core >=3.2,<4",
